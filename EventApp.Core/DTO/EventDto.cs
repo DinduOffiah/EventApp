@@ -2,6 +2,7 @@
 {
     public class EventDto
     {
+        public int EventId { get; set; }
         public string? EventName { get; set; }
         public byte[]? Image { get; set; }
         public DateTime? EventDate { get; set; }

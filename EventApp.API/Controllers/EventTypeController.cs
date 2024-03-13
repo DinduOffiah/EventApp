@@ -37,13 +37,14 @@ namespace EventApp.API.Controllers
             {
                 var eventTypes = await _service.GetEventTypesAsync();
 
-                if (eventTypes == null)
+                if (eventTypes == null || !eventTypes.Any())
                 {
-                    return NotFound("No event types found.");
+                    return NotFound("No event type found.");
                 }
 
                 var eventTypeDtos = eventTypes.Select(e => new EventTypeDto
                 {
+                    EventTypeId = e.EventTypeId,
                     EventTypeName = e.EventTypeName
                 }).ToList();
 

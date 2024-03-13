@@ -39,8 +39,11 @@ namespace EventApp.DAL.Migrations
                     b.Property<int>("EventTypeId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Image")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Limit")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");

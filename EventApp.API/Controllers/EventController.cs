@@ -31,19 +31,20 @@ namespace EventApp.API.Controllers
         /// This endpoint gets LIST of events.
         /// </summary>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EventDto>>> GetEvents()
+        public async Task<IActionResult> GetEvents()
         {
             try
             {
                 var events = await _service.GetEventAsync();
 
-                if (events == null)
+                if (events == null || !events.Any())
                 {
-                    return NotFound("No events found.");
+                    return NotFound("No event found.");
                 }
 
                 var eventDtos = events.Select(e => new EventDto
                 {
+                    EventId = e.EventId,
                     EventName = e.EventName,
                     Image = e.Image,
                     EventDate = e.EventDate,
@@ -118,7 +119,7 @@ namespace EventApp.API.Controllers
                     Location = eventDto.Location,
                     TicketTypeId = eventDto.TicketTypeId,
                     EventTypeId = eventDto.EventTypeId,
-                    Limit = eventDto.Limit
+                    Limit = eventDto.Limit,
                 };
 
                 var newEvent = await _service.CreateEventAsync(eventItem);

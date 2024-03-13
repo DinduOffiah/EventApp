@@ -12,9 +12,20 @@ builder.Services.AddScoped<ITicketTypeService, TicketTypeService>();
 
 // Configure the database context and connection string
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<EventAppDbContext>(options => options.UseSqlServer(connectionString, x => x.MigrationsAssembly("EventApp.DAL")));
+builder.Services.AddDbContext<EventAppDbContext>(options => options.UseSqlServer(connectionString, x => x.MigrationsAssembly("EventApp.DAL")).EnableDetailedErrors(true));
 
 builder.Services.AddControllers();
+
+// Add CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyPolicy", builder =>
+    {
+        builder.WithOrigins("https://localhost:7087")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 // Add logging services
 builder.Services.AddLogging(config =>
@@ -42,7 +53,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseRouting();
+
+app.UseCors("MyPolicy"); // Make sure this is after UseRouting
 
 app.UseAuthorization();
 

@@ -39,11 +39,12 @@ namespace EventApp.API.Controllers
 
                 if (ticketTypes == null || !ticketTypes.Any())
                 {
-                    return NotFound("No ticket types found.");
+                    return NotFound("No ticket type found.");
                 }
 
                 var ticketTypeDtos = ticketTypes.Select(t => new TicketTypeDto
                 {
+                    TicketTypeId = t.TicketTypeId,
                     TicketTypeName = t.TicketTypeName
                 }).ToList();
 
@@ -165,6 +166,7 @@ namespace EventApp.API.Controllers
 
                 var ticketTypeDto = new TicketTypeDto
                 {
+                    TicketTypeId = ticketTypeToDelete.TicketTypeId,
                     TicketTypeName = ticketTypeToDelete.TicketTypeName
                 };
 
