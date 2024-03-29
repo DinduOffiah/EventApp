@@ -15,7 +15,10 @@ namespace EventApp.Core.Services
 
         public async Task<IEnumerable<Event>> GetEventAsync()
         {
-            return await _context.Events.Where(t => t.IsDeleted == false).ToListAsync();
+            return await _context.Events
+        .Where(e => e.IsDeleted == false)
+        .Include(e => e.EventType)
+        .Include(e => e.TicketType).ToListAsync();
         }
 
         public async Task<Event> GetEventByIdAsync(int id)

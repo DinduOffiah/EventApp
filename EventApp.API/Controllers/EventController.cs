@@ -51,7 +51,9 @@ namespace EventApp.API.Controllers
                     Location = e.Location,
                     TicketTypeId = e.TicketTypeId,
                     EventTypeId = e.EventTypeId,
-                    Limit = e.Limit
+                    Limit = e.Limit,
+                    EventTypeName = e.EventType?.EventTypeName,
+                    TicketTypeName = e.TicketType?.TicketTypeName,
                 }).ToList();
 
                 return Ok(eventDtos);
