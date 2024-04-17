@@ -85,6 +85,7 @@ namespace EventApp.API.Controllers
 
                 var eventDto = new EventDto
                 {
+                    EventId = eventItem.EventId,
                     EventName = eventItem.EventName,
                     Image = eventItem.Image,
                     EventDate = eventItem.EventDate,
@@ -105,6 +106,7 @@ namespace EventApp.API.Controllers
                 return StatusCode(500, "Internal server error. Please try again later.");
             }
         }
+
 
 
         /// <summary>

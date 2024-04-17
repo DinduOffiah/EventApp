@@ -23,7 +23,11 @@ namespace EventApp.Core.Services
 
         public async Task<Event> GetEventByIdAsync(int id)
         {
-            return await _context.Events.FindAsync(id);
+            return await _context.Events
+                .Where(e => e.EventId == id)
+                .Include(e => e.EventType)
+                .Include(e => e.TicketType)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<Event> CreateEventAsync(Event events)
