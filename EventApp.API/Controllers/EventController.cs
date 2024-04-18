@@ -180,6 +180,9 @@ namespace EventApp.API.Controllers
                 eventItem.EventName = eventDto.EventName ?? eventItem.EventName;
                 eventItem.Image = eventDto.Image ?? eventItem.Image;
                 eventItem.EventDate = eventDto.EventDate ?? eventItem.EventDate;
+                eventItem.StartDate = eventDto.StartDate ?? eventItem.StartDate;
+                eventItem.EndDate = eventDto.EndDate ?? eventItem.EndDate;
+                eventItem.Description = eventDto.Description ?? eventItem.Description;
                 eventItem.Location = eventDto.Location ?? eventItem.Location;
                 eventItem.TicketTypeId = eventDto.TicketTypeId != 0 ? eventDto.TicketTypeId : eventItem.TicketTypeId;
                 eventItem.EventTypeId = eventDto.EventTypeId != 0 ? eventDto.EventTypeId : eventItem.EventTypeId;
