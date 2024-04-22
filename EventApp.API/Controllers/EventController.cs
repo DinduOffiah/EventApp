@@ -48,6 +48,8 @@ namespace EventApp.API.Controllers
                     EventName = e.EventName,
                     Image = e.Image,
                     EventDate = e.EventDate,
+                    StartDate = e.StartDate,
+                    EndDate = e.EndDate,
                     Location = e.Location,
                     TicketTypeId = e.TicketTypeId,
                     EventTypeId = e.EventTypeId,
