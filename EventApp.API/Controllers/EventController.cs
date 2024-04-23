@@ -31,11 +31,11 @@ namespace EventApp.API.Controllers
         /// This endpoint gets LIST of events.
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> GetEvents()
+        public async Task<IActionResult> GetEvents(string query = null)
         {
             try
             {
-                var events = await _service.GetEventAsync();
+                var events = await _service.GetEventAsync(query);
 
                 if (events == null || !events.Any())
                 {
