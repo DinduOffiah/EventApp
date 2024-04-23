@@ -13,13 +13,22 @@ namespace EventApp.Core.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Event>> GetEventAsync()
+        public async Task<IEnumerable<Event>> GetEventAsync(string query = null)
         {
-            return await _context.Events
-        .Where(e => e.IsDeleted == false)
-        .Include(e => e.EventType)
-        .Include(e => e.TicketType).ToListAsync();
+            IQueryable<Event> events = _context.Events
+                .Where(e => e.IsDeleted == false)
+                .Include(e => e.EventType)
+                .Include(e => e.TicketType);
+
+            if (!string.IsNullOrEmpty(query))
+            {
+                events = events.Where(e => e.EventName.Contains(query) || e.Location.Contains(query));
+            }
+
+            // Finally, execute the query and return the results
+            return await events.ToListAsync();
         }
+
 
         public async Task<Event> GetEventByIdAsync(int id)
         {

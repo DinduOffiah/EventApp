@@ -4,7 +4,7 @@ namespace EventApp.Core.Services
 {
     public interface IEventService
     {
-        Task<IEnumerable<Event>> GetEventAsync();
+        Task<IEnumerable<Event>> GetEventAsync(string query);
         Task<Event> GetEventByIdAsync(int id);
         Task<Event> CreateEventAsync(Event events);
         Task UpdateEventAsync(Event events);
