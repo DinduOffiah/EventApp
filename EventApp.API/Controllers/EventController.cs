@@ -51,6 +51,7 @@ namespace EventApp.API.Controllers
                     StartDate = e.StartDate,
                     EndDate = e.EndDate,
                     Location = e.Location,
+                    TicketPrice = e.TicketPrice,
                     TicketTypeId = e.TicketTypeId,
                     EventTypeId = e.EventTypeId,
                     Limit = e.Limit,
@@ -95,6 +96,7 @@ namespace EventApp.API.Controllers
                     EndDate = eventItem.EndDate,
                     Description = eventItem.Description,
                     Location = eventItem.Location,
+                    TicketPrice = eventItem.TicketPrice,
                     TicketTypeId = eventItem.TicketTypeId,
                     EventTypeId = eventItem.EventTypeId,
                     Limit = eventItem.Limit,
@@ -131,6 +133,7 @@ namespace EventApp.API.Controllers
                     EndDate = eventDto.EndDate,
                     Description = eventDto.Description,
                     Location = eventDto.Location,
+                    TicketPrice= eventDto.TicketPrice,
                     TicketTypeId = eventDto.TicketTypeId,
                     EventTypeId = eventDto.EventTypeId,
                     Limit = eventDto.Limit,
@@ -149,6 +152,7 @@ namespace EventApp.API.Controllers
                     Image = newEvent.Image,
                     EventDate = newEvent.EventDate,
                     Location = newEvent.Location,
+                    TicketPrice = newEvent.TicketPrice,
                     TicketTypeId = newEvent.TicketTypeId,
                     EventTypeId = newEvent.EventTypeId,
                     Limit = newEvent.Limit
@@ -189,6 +193,7 @@ namespace EventApp.API.Controllers
                 eventItem.TicketTypeId = eventDto.TicketTypeId != 0 ? eventDto.TicketTypeId : eventItem.TicketTypeId;
                 eventItem.EventTypeId = eventDto.EventTypeId != 0 ? eventDto.EventTypeId : eventItem.EventTypeId;
                 eventItem.Limit = eventDto.Limit != 0 ? eventDto.Limit : eventItem.Limit;
+                eventItem.TicketPrice = eventDto.TicketPrice != 0 ? eventDto.TicketPrice : eventItem.TicketPrice;
 
                 await _service.UpdateEventAsync(eventItem);
 
@@ -223,6 +228,7 @@ namespace EventApp.API.Controllers
                     Image = eventToDelete.Image,
                     EventDate = eventToDelete.EventDate,
                     Location = eventToDelete.Location,
+                    TicketPrice = eventToDelete.TicketPrice,
                     TicketTypeId = eventToDelete.TicketTypeId,
                     EventTypeId = eventToDelete.EventTypeId,
                     Limit = eventToDelete.Limit
