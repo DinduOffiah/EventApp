@@ -46,8 +46,8 @@ namespace EventApp.API.Controllers
                     }
                 },
                     Mode = "payment",
-                    SuccessUrl = "https://yourwebsite.com/success", // Redirect after successful payment
-                    CancelUrl = "https://yourwebsite.com/cancel" // Redirect if user cancels
+                    SuccessUrl = "https://localhost:7087/paymentsuccessful", // Redirect after successful payment
+                    CancelUrl = "https://localhost:7087/paymentcancelled" // Redirect if user cancels
                 };
 
                 var service = new SessionService();
