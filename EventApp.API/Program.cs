@@ -53,6 +53,8 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Host.UseSerilog();
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("StripeSettings"));
+
 
 var app = builder.Build();
 
